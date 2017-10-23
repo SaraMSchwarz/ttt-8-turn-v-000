@@ -33,20 +33,12 @@ end
 
 def turn(board)
   puts "Please enter 1-9:"
-  usermove = gets.strip
-  index = input_to_index(usermove)
-  step = valid_move?(board, index)
-  if step == true
-    move(board, index, char="X")
-  else step == false
-    until step == true
-      puts "Sorry, that was an invalid move. Please enter 1-9:"
-      usermove = gets.strip
-      index = input_to_index(usermove)
-      step = valid_move?(board, index)
-      move(board, index, char="X")
-
-    end
+  input = gets.strip
+  index = input_to_index(input)
+  if valid_move?(board, index)
+    move(board, index)
+    display_board(board)
+  else
+    turn(board)
   end
-  display_board(board)
 end
